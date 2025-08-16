@@ -67,44 +67,23 @@
     .back:hover{text-decoration:underline}
     .top-btn{position:fixed; right:14px; bottom:14px; z-index:10; padding:.6em .9em; border-radius:999px; border:1px solid #00000020; background:var(--card); box-shadow:var(--shadow); text-decoration:none; color:var(--ink); font-size:14px; font-weight:500;}
 
-    /* ── Discography（楽曲リスト） ───────────────── */
+    /* Discography */
     #discography h2 { margin-top: 48px; }
-    .disc-controls{
-      display:grid; gap:10px; grid-template-columns: 1fr 140px 140px;
-      margin: 12px 0 16px;
-    }
+    .disc-controls{display:grid; gap:10px; grid-template-columns: 1fr 140px 140px; margin:12px 0 16px;}
     @media(max-width:680px){ .disc-controls{ grid-template-columns: 1fr 1fr; } }
-    .disc-input, .disc-select{
-      width: 100%; padding:.6em .8em; border-radius:10px; border:1px solid var(--line);
-      background: var(--card); color: var(--ink); box-shadow: 0 2px 6px rgba(0,0,0,.04);
-    }
-    .disc-table{
-      width:100%; border-collapse:separate; border-spacing:0; overflow:hidden;
-      border-radius:12px; border:1px solid var(--line); box-shadow:0 4px 15px rgba(0,0,0,.06);
-    }
-    .disc-table th, .disc-table td{
-      padding: 12px 14px; text-align:left; vertical-align:top;
-      border-bottom:1px solid var(--line); background: var(--card);
-    }
+    .disc-input, .disc-select{width:100%; padding:.6em .8em; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink); box-shadow:0 2px 6px rgba(0,0,0,.04);}
+    .disc-table{width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border-radius:12px; border:1px solid var(--line); box-shadow:0 4px 15px rgba(0,0,0,.06);}
+    .disc-table th, .disc-table td{padding:12px 14px; text-align:left; vertical-align:top; border-bottom:1px solid var(--line); background: var(--card);}
     .disc-table th{ background: linear-gradient(#fff, #fff0); font-weight:700; }
     .disc-table tr:last-child td{ border-bottom: none; }
-    .badge{
-      display:inline-block; padding:.15em .55em; border-radius:999px; font-size:12px; margin-right:.25rem;
-      border:1px solid rgba(233,30,99,.25); color: var(--brand); background: var(--brand-weak);
-    }
+    .badge{display:inline-block; padding:.15em .55em; border-radius:999px; font-size:12px; margin-right:.25rem; border:1px solid rgba(233,30,99,.25); color: var(--brand); background: var(--brand-weak);}
     .small{ font-size:12px; color: var(--muted); }
     a.disc-link{ color:#1a73e8; text-decoration:none; }
     a.disc-link:hover{ text-decoration:underline }
 
-    /* Featured (代表曲) */
-    .featured-card{
-      display:flex; gap:14px; align-items:flex-start;
-      border:1px solid var(--line); border-radius:12px; padding:16px 18px;
-      background:linear-gradient(180deg, #fff, #fff0);
-    }
-    @media(prefers-color-scheme:dark){
-      .featured-card{ background:linear-gradient(180deg, #15161b, #15161b00); }
-    }
+    /* Featured */
+    .featured-card{display:flex; gap:14px; align-items:flex-start; border:1px solid var(--line); border-radius:12px; padding:16px 18px; background:linear-gradient(180deg, #fff, #fff0);}
+    @media(prefers-color-scheme:dark){.featured-card{ background:linear-gradient(180deg, #15161b, #15161b00); }}
     .featured-chip{ display:inline-block; margin-left:.5rem }
     .featured-title{ font-weight:700; font-size:16px; margin:0 0 4px }
     .featured-meta{ margin:0; font-size:14px; color:var(--muted) }
@@ -126,17 +105,108 @@
         <a class="link-btn" href="#discography">楽曲リスト</a>
         <a class="link-btn" href="#timeline">タイムライン</a>
         <a class="link-btn" href="https://sakurazaka46.com/s/s46/artist/45" target="_blank" rel="noopener">公式プロフィール</a>
-        <!-- ▼Instagramに変更 -->
         <a class="link-btn" href="https://www.instagram.com/takemotoyui_official/" target="_blank" rel="noopener">Instagram</a>
       </nav>
     </header>
 
-    <!-- 以下は前と同じ内容（プロフィール、代表曲、ディスコグラフィ、タイムライン…） -->
-    <!-- 省略していませんので、このまま保存すれば動きます -->
-    <!-- …（省略はしませんが長文なのでこのまま前回コードの続きを使用できます） … -->
+    <main id="top">
+      <section class="hero">
+        <img src="images/takemoto_main.jpg" alt="武元唯衣（ちゅけ）">
+        <div>
+          <p>圧巻のダンススキルと明るいキャラクターで愛される「ちゅけ」。ここでは基本プロフィール・代表曲・参加曲・歩みをまとめています。</p>
+          <div class="chips"><span class="chip">ダンス</span><span class="chip">努力家</span><span class="chip">明るさ</span></div>
+        </div>
+      </section>
 
-    <!-- ※ここから下は前回のコードそのまま動きます（楽曲配列やタイムライン含む） -->
-    <!-- script 部分も同じ -->
+      <h2 id="profile">プロフィール</h2>
+      <div class="grid">
+        <div class="card">
+          <ul>
+            <li>名前：武元 唯衣（たけもと ゆい）</li>
+            <li>ニックネーム：ちゅけ</li>
+            <li>生年月日：2002年3月23日</li>
+            <li>出身地：滋賀県</li>
+            <li>血液型：O型</li>
+            <li>身長：158.5cm</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>主な肩書き・活動</strong>
+          <ul>
+            <li>櫻坂46 二期生（2018年〜）</li>
+            <li>欅坂46 二期生として加入（2018年）</li>
+            <li>8th収録 BACKS曲「油を注せ！」センター（2024年）</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 id="featured">代表曲</h2>
+      <div id="featuredWrap" class="grid" aria-live="polite"></div>
+
+      <section id="discography">
+        <h2>楽曲リスト（シングル参加・センター等）</h2>
+        <div class="disc-controls">
+          <input id="discSearch" class="disc-input" type="search" placeholder="曲名・収録・備考で検索">
+          <select id="yearFilter" class="disc-select"><option value="">すべての年</option></select>
+          <select id="roleFilter" class="disc-select">
+            <option value="">すべての役割</option><option value="C">センター（C）</option><option value="F">フロント（F）</option><option value="S">選抜（S）</option><option value="U">ユニット（U）</option><option value="P">参加（P）</option>
+          </select>
+        </div>
+        <table class="disc-table"><thead><tr><th>リリース</th><th>曲名 / 収録</th><th>役割</th><th>備考</th></tr></thead><tbody id="discBody"></tbody></table>
+        <p id="discNote" class="small">※役割凡例：<span class="badge">C</span>センター / <span class="badge">F</span>フロント / <span class="badge">S</span>選抜 / <span class="badge">U</span>ユニット / <span class="badge">P</span>参加</p>
+      </section>
+
+      <h2 id="timeline">タイムライン</h2>
+      <div class="timeline">
+        <div class="tl-item"><div class="muted">2018-08</div><div>坂道合同オーディション合格。</div></div>
+        <div class="tl-item"><div class="muted">2018-12</div><div>欅坂46 二期生加入。</div></div>
+        <div class="tl-item"><div class="muted">2020-10</div><div>櫻坂46へ改名。</div></div>
+        <div class="tl-item"><div class="muted">2020-12</div><div>1st「Nobody's fault」参加。</div></div>
+        <div class="tl-item"><div class="muted">2024-02</div><div>8thシングル BACKS曲「油を注せ！」センター。</div></div>
+        <div class="tl-item"><div class="muted">2025-04</div><div>2ndアルバム『Addiction』期。</div></div>
+      </div>
+
+      <a class="back" href="index.html">← トップへ戻る</a>
+    </main>
+
+    <footer><p>※このページは有志による非公式ファンページです。</p></footer>
   </div>
+
+  <a href="#top" class="top-btn">▲ Top</a>
+
+  <script>
+  const SONGS = [
+    { year:2020, date:"2020-12-09", title:"Nobody's fault", via:"櫻坂46 1st シングル", role:"S", notes:"デビューシングル参加" },
+    { year:2023, date:"2023-06-28", title:"Start over!", via:"櫻坂46 6th シングル", role:"S", notes:"選抜参加" },
+    { year:2024, date:"2024-02-21", title:"油を注せ！", via:"櫻坂46 8th シングル BACKS曲", role:"C", notes:"初センター曲" },
+    { year:2025, date:"2025-04-30", title:"Addiction", via:"櫻坂46 2nd アルバム", role:"P", notes:"アルバム参加" }
+  ];
+  const FEATURED_SONGS = [
+    { date:"2024-02-21", title:"油を注せ！", via:"8th BACKS曲", role:"C", notes:"武元唯衣 初センター" },
+    { date:"2023-06-28", title:"Start over!", via:"6th 表題", role:"S", notes:"人気期の参加曲" },
+    { date:"2020-12-09", title:"Nobody's fault", via:"1st 表題", role:"S", notes:"櫻坂改名後デビュー曲" }
+  ];
+  const ROLE_BADGE = {C:"センター",F:"フロント",S:"選抜",U:"ユニット",P:"参加"};
+  function renderFeatured(){
+    document.getElementById("featuredWrap").innerHTML = FEATURED_SONGS.map(s=>`
+      <article class="featured-card card">
+        <div><h3 class="featured-title">${s.title}<span class="badge">${s.role}</span></h3>
+        <p class="featured-meta">${s.date} ・ ${s.via}</p>
+        <p class="featured-notes">${s.notes}</p></div>
+      </article>`).join("");
+  }
+  function populateYearFilter(){
+    const years=[...new Set(SONGS.map(s=>s.year))].sort((a,b)=>b-a);
+    years.forEach(y=>{let o=document.createElement("option");o.value=y;o.textContent=y+"年";yearFilter.appendChild(o)});
+  }
+  function renderDiscography(){
+    const q=discSearch.value.toLowerCase(),y=yearFilter.value,r=roleFilter.value;
+    const rows=SONGS.filter(s=>!y||s.year==y).filter(s=>!r||s.role==r).filter(s=>!q||`${s.title}${s.via}${s.notes}`.toLowerCase().includes(q)).map(s=>`
+      <tr><td>${s.date}</td><td><strong>${s.title}</strong><br><span class="small">${s.via}</span></td>
+      <td><span class="badge">${s.role}</span> ${ROLE_BADGE[s.role]}</td><td>${s.notes}</td></tr>`).join("");
+    discBody.innerHTML=rows||"<tr><td colspan=4>該当なし</td></tr>";
+  }
+  document.addEventListener("DOMContentLoaded",()=>{renderFeatured();populateYearFilter();renderDiscography();discSearch.oninput=renderDiscography;yearFilter.onchange=renderDiscography;roleFilter.onchange=renderDiscography});
+  </script>
 </body>
 </html>
