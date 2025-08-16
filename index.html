@@ -1,53 +1,329 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>武元唯衣 - 推しメン紹介</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>武元唯衣（ちゅけ）- 紹介・楽曲・タイムライン</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: "Helvetica Neue", sans-serif;
-      background: #f9fafc;
-      margin: 0;
-      padding: 40px;
-      color: #2d2d2d;
-      line-height: 1.7;
+    :root{
+      --bg:#f9fafc; --card:#fff; --ink:#2d2d2d; --muted:#6b7280;
+      --brand:#e91e63; --brand-weak:#fde7ef; --ring:rgba(233,30,99,.25);
+      --shadow:0 8px 24px rgba(0,0,0,.08); --radius:14px; --line:#0001;
     }
-    .container {
-      max-width: 700px;
-      margin: auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0b0c10; --card:#121317; --ink:#e7e9ee; --muted:#a3a9b6;
+        --brand:#ff5c93; --brand-weak:#2a0f19; --ring:rgba(255,92,147,.3);
+        --shadow:0 10px 30px rgba(0,0,0,.45); --line:#fff1;
+      }
     }
-    h1 { font-size: 26px; color: #2e7d32; }
-    h2 { font-size: 20px; margin-top: 20px; color: #555; border-left: 4px solid #2e7d32; padding-left: 10px; }
-    a { color: #1a73e8; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    ul { padding-left: 20px; }
+    *{box-sizing:border-box}
+    body{
+      font-family:"M PLUS Rounded 1c","Noto Sans JP",system-ui,sans-serif;
+      background: radial-gradient(1200px 600px at 10% -10%, #ffffff80, transparent), var(--bg);
+      margin:0; padding:24px; color:var(--ink); line-height:1.72;
+    }
+    .container{max-width:920px; margin:0 auto; background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);}
+    header{padding:28px 28px 18px; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
+    .dot{width:10px; height:10px; border-radius:999px; background:var(--brand); box-shadow:0 0 0 6px var(--brand-weak);}
+    .title{font-size:clamp(22px,2vw+12px,30px); margin:0; font-weight:700; letter-spacing:1px;}
+    .subtitle{margin:0; color:var(--muted); font-size:15px; font-weight:500;}
+    nav{margin-left:auto; display:flex; gap:8px; flex-wrap:wrap}
+    .link-btn{display:inline-flex; align-items:center; gap:.4em; padding:.5em .8em; border-radius:10px; border:1px solid var(--brand); color:var(--brand); text-decoration:none; font-size:14px; font-weight:500;}
+    .link-btn:hover{box-shadow:0 0 0 6px var(--ring) inset;}
+    main{padding:24px;}
+    /* Hero */
+    .hero{display:grid; grid-template-columns:180px 1fr; gap:18px; padding:14px; border-radius:12px; background:linear-gradient(135deg, var(--brand-weak), transparent 60%); border:1px solid var(--line);}
+    .hero img{width:100%; height:180px; object-fit:cover; border-radius:12px; border:1px solid var(--line);}
+    .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px}
+    .chip{padding:.25em .6em; border-radius:999px; font-size:12px; background:#00000008; border:1px solid var(--line);}
+    @media(max-width:720px){.hero{grid-template-columns:1fr}.hero img{height:220px}}
+
+    h2{font-size:22px; margin:40px 0 20px; padding-left:14px; border-left:5px solid var(--brand); color:var(--ink); font-weight:700;}
+
+    /* Cards */
+    .grid{display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+    .card{background:var(--card); border-radius:12px; padding:20px 24px; box-shadow:0 4px 15px rgba(0,0,0,.08); border:1px solid rgba(233,30,99,.15); transition:transform .2s, box-shadow .2s;}
+    .card:hover{transform:translateY(-4px); box-shadow:0 8px 20px rgba(0,0,0,.15);}
+    .card strong{display:block; margin-bottom:10px; font-size:16px; color:var(--brand);}
+    .card ul{list-style:none; padding:0; margin:0;}
+    .card li{margin:6px 0; padding-left:1.2em; position:relative; font-size:15px; color:#444;}
+    .card li::before{content:"•"; position:absolute; left:0; color:var(--brand);}
+    @media(prefers-color-scheme:dark){.card li{color:#d9dbe2;}}
+
+    /* Timeline */
+    .timeline{position:relative; margin-left:6px;}
+    .timeline::before{content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:#00000015;}
+    .tl-item{position:relative; padding-left:24px; margin:10px 0 16px}
+    .tl-item::before{content:""; position:absolute; left:2px; top:.45em; width:12px; height:12px; border-radius:999px; background:var(--brand); box-shadow:0 0 0 6px var(--brand-weak);}
+    .muted{color:var(--muted); font-size:13px; font-weight:500;}
+
+    footer{padding:18px 24px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; text-align:center;}
+    .back{display:inline-block; margin-top:24px; text-decoration:none; color:#1a73e8; font-weight:500;}
+    .back:hover{text-decoration:underline}
+    .top-btn{position:fixed; right:14px; bottom:14px; z-index:10; padding:.6em .9em; border-radius:999px; border:1px solid #00000020; background:var(--card); box-shadow:var(--shadow); text-decoration:none; color:var(--ink); font-size:14px; font-weight:500;}
+
+    /* ── Discography（楽曲リスト） ───────────────── */
+    #discography h2 { margin-top: 48px; }
+    .disc-controls{
+      display:grid; gap:10px; grid-template-columns: 1fr 140px 140px;
+      margin: 12px 0 16px;
+    }
+    @media(max-width:680px){ .disc-controls{ grid-template-columns: 1fr 1fr; } }
+    .disc-input, .disc-select{
+      width: 100%; padding:.6em .8em; border-radius:10px; border:1px solid var(--line);
+      background: var(--card); color: var(--ink); box-shadow: 0 2px 6px rgba(0,0,0,.04);
+    }
+    .disc-table{
+      width:100%; border-collapse:separate; border-spacing:0; overflow:hidden;
+      border-radius:12px; border:1px solid var(--line); box-shadow:0 4px 15px rgba(0,0,0,.06);
+    }
+    .disc-table th, .disc-table td{
+      padding: 12px 14px; text-align:left; vertical-align:top;
+      border-bottom:1px solid var(--line); background: var(--card);
+    }
+    .disc-table th{ background: linear-gradient(#fff, #fff0); font-weight:700; }
+    .disc-table tr:last-child td{ border-bottom: none; }
+    .badge{
+      display:inline-block; padding:.15em .55em; border-radius:999px; font-size:12px; margin-right:.25rem;
+      border:1px solid rgba(233,30,99,.25); color: var(--brand); background: var(--brand-weak);
+    }
+    .small{ font-size:12px; color: var(--muted); }
+    a.disc-link{ color:#1a73e8; text-decoration:none; }
+    a.disc-link:hover{ text-decoration:underline }
+
+    /* Featured (代表曲) */
+    .featured-card{
+      display:flex; gap:14px; align-items:flex-start;
+      border:1px solid var(--line); border-radius:12px; padding:16px 18px;
+      background:linear-gradient(180deg, #fff, #fff0);
+    }
+    @media(prefers-color-scheme:dark){
+      .featured-card{ background:linear-gradient(180deg, #15161b, #15161b00); }
+    }
+    .featured-chip{ display:inline-block; margin-left:.5rem }
+    .featured-title{ font-weight:700; font-size:16px; margin:0 0 4px }
+    .featured-meta{ margin:0; font-size:14px; color:var(--muted) }
+    .featured-notes{ margin:6px 0 0; font-size:14px }
+    .featured-link{ color:#1a73e8; font-size:14px; text-decoration:none }
+    .featured-link:hover{ text-decoration:underline }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>武元唯衣（たけもと ゆい）</h1>
+    <header>
+      <span class="dot"></span>
+      <div>
+        <h1 class="title">武元 唯衣（たけもと ゆい）</h1>
+        <p class="subtitle">ちゅけ紹介（非公式ファンページ）</p>
+      </div>
+      <nav aria-label="外部リンク">
+        <a class="link-btn" href="#featured">代表曲</a>
+        <a class="link-btn" href="#discography">楽曲リスト</a>
+        <a class="link-btn" href="#timeline">タイムライン</a>
+        <a class="link-btn" href="https://sakurazaka46.com/s/s46/artist/45" target="_blank" rel="noopener">公式プロフィール</a>
+        <a class="link-btn" href="https://www.youtube.com/@sakurazaka46SMEJ" target="_blank" rel="noopener">YouTube</a>
+      </nav>
+    </header>
 
-    <h2>プロフィール</h2>
-    <ul>
-      <li>櫻坂46メンバー</li>
-      <li>生年月日：2002年3月23日</li>
-      <li>出身地：滋賀県</li>
-      <li>ニックネーム：ちゅけ</li>
-    </ul>
+    <main id="top">
+      <!-- Hero -->
+      <section class="hero">
+        <!-- ※画像差し替え -->
+        <img src="images/takemoto_main.jpg" alt="武元唯衣（ちゅけ）">
+        <div>
+          <p>圧巻のダンススキルと明るいキャラクターで愛される「ちゅけ」。ここでは基本プロフィール・代表曲・参加曲・歩みをまとめています。</p>
+          <div class="chips">
+            <span class="chip">ダンス</span><span class="chip">努力家</span><span class="chip">明るさ</span>
+          </div>
+        </div>
+      </section>
 
-    <h2>魅力・好きなところ</h2>
-    <ul>
-      <li>力強いパフォーマンス</li>
-      <li>真っ直ぐなトークと人柄</li>
-      <li>努力家で芯があるところ</li>
-    </ul>
+      <!-- Profile -->
+      <h2 id="profile">プロフィール</h2>
+      <div class="grid">
+        <div class="card">
+          <ul>
+            <li>名前：武元 唯衣（たけもと ゆい）</li>
+            <li>ニックネーム：ちゅけ</li>
+            <li>生年月日：2002年3月23日</li>
+            <li>出身地：滋賀県</li>
+            <li>血液型：O型</li>
+            <li>身長：158.5cm</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>主な肩書き・活動</strong>
+          <ul>
+            <li>櫻坂46 二期生（2018年〜）</li>
+            <li>欅坂46 二期生として加入（2018年）→ 2020年に櫻坂46へ改名</li>
+            <li>8th収録 BACKS曲「油を注せ！」センター（2024年）</li>
+          </ul>
+        </div>
+      </div>
 
-    <p><a href="index.html">← プロフィールページに戻る</a></p>
+      <!-- Featured / 代表曲 -->
+      <h2 id="featured">代表曲</h2>
+      <div id="featuredWrap" class="grid" aria-live="polite"></div>
+
+      <!-- Discography -->
+      <section id="discography">
+        <h2>楽曲リスト（シングル参加・センター等）</h2>
+
+        <div class="disc-controls">
+          <input id="discSearch" class="disc-input" type="search" placeholder="曲名・収録・備考で検索">
+          <select id="yearFilter" class="disc-select" title="年で絞り込み">
+            <option value="">すべての年</option>
+          </select>
+          <select id="roleFilter" class="disc-select" title="役割で絞り込み">
+            <option value="">すべての役割</option>
+            <option value="C">センター（C）</option>
+            <option value="F">フロント（F）</option>
+            <option value="S">選抜（S）</option>
+            <option value="U">ユニット（U）</option>
+            <option value="P">参加（P）</option>
+          </select>
+        </div>
+
+        <table class="disc-table" aria-describedby="discNote">
+          <thead>
+            <tr>
+              <th style="width:7em">リリース</th>
+              <th>曲名 / 収録</th>
+              <th style="width:9em">役割</th>
+              <th>備考</th>
+            </tr>
+          </thead>
+          <tbody id="discBody"></tbody>
+        </table>
+        <p id="discNote" class="small" style="margin-top:8px">
+          ※ 役割の凡例：<span class="badge">C</span>センター / <span class="badge">F</span>フロント / <span class="badge">S</span>選抜 / <span class="badge">U</span>ユニット / <span class="badge">P</span>参加  
+          （正確な情報は公式発表・リリース情報で確認のうえ更新してください）
+        </p>
+      </section>
+
+      <!-- Timeline -->
+      <h2 id="timeline">タイムライン</h2>
+      <div class="timeline">
+        <div class="tl-item"><div class="muted">2018-08-20</div><div>坂道合同オーディション合格。</div></div>
+        <div class="tl-item"><div class="muted">2018-12-03</div><div>欅坂46 二期生として加入。</div></div>
+        <div class="tl-item"><div class="muted">2020-10-14</div><div>櫻坂46へ改名（二期生として活動継続）。</div></div>
+        <div class="tl-item"><div class="muted">2020-12-09</div><div>櫻坂46 1st「Nobody's fault」参加。</div></div>
+        <div class="tl-item"><div class="muted">2024-02-21</div><div>8thシングル収録 BACKS曲「油を注せ！」センター。</div></div>
+        <div class="tl-item"><div class="muted">2025-04-30</div><div>2ndアルバム『Addiction』リリース期（配信開始）。</div></div>
+      </div>
+
+      <a class="back" href="index.html">← トップへ戻る</a>
+    </main>
+
+    <footer>
+      <p>※このページは有志による非公式ファンページです。記載の情報・画像等の権利は各権利者に帰属します。</p>
+    </footer>
   </div>
+
+  <a href="#top" class="top-btn">▲ Top</a>
+
+  <!-- ===== ディスコグラフィ用スクリプト ===== -->
+  <script>
+  // role: C=センター, F=フロント, S=選抜, U=ユニット, P=参加
+  // データは必要に応じて追記OK（代表曲はFEATURED_SONGS側を表示）
+  const SONGS = [
+    // 代表曲・印象的な参加曲（サンプル）
+    { year: 2020, date: "2020-12-09", title: "Nobody's fault", via: "櫻坂46 1st シングル", role: "S", notes: "改名後のデビュー曲に参加", link: "" },
+    { year: 2021, date: "2021-10-13", title: "流れ弾", via: "櫻坂46 3rd シングル", role: "S", notes: "選抜参加", link: "" },
+    { year: 2023, date: "2023-06-28", title: "Start over!", via: "櫻坂46 6th シングル", role: "S", notes: "選抜参加", link: "" },
+    { year: 2024, date: "2024-02-21", title: "油を注せ！", via: "櫻坂46 8th シングル（BACKS曲）", role: "C", notes: "BACKSセンター曲（MV有）", link: "https://www.youtube.com/watch?v=videos" },
+    { year: 2024, date: "2024-06-26", title: "自業自得", via: "櫻坂46 9th シングル", role: "S", notes: "選抜/BACKS等は公式情報に準拠して更新してください", link: "" },
+    { year: 2024, date: "2024-10-23", title: "I want tomorrow to come", via: "櫻坂46 10th シングル", role: "S", notes: "選抜参加（状況に応じ更新）", link: "" },
+    { year: 2025, date: "2025-04-30", title: "Addiction", via: "櫻坂46 2nd アルバム（Complete Edition配信）", role: "P", notes: "アルバム期トピック", link: "" }
+  ];
+
+  /* ==== 代表曲（カード表示）==== */
+  const FEATURED_SONGS = [
+    { year: 2024, date: "2024-02-21", title: "油を注せ！", via: "8th収録（BACKS曲）", role: "C", notes: "初のセンター曲。MV公開。", link: "https://www.youtube.com/watch?v=videos" },
+    { year: 2023, date: "2023-06-28", title: "Start over!", via: "6th 表題 参加", role: "S", notes: "ダンス評価の高い時期の代表参加曲。", link: "" },
+    { year: 2020, date: "2020-12-09", title: "Nobody's fault", via: "1st 表題 参加", role: "S", notes: "櫻坂改名後の幕開け。", link: "" }
+  ];
+
+  const ROLE_BADGE = { C:"センター", F:"フロント", S:"選抜", U:"ユニット", P:"参加" };
+
+  function renderFeatured(){
+    const wrap = document.getElementById("featuredWrap");
+    if(!wrap) return;
+    wrap.innerHTML = FEATURED_SONGS
+      .slice()
+      .sort((a,b)=>a.date.localeCompare(b.date))
+      .map(s => {
+        const badge = ROLE_BADGE[s.role] ? `<span class="badge featured-chip">${s.role}</span>` : "";
+        const link = s.link ? `　<a class="featured-link" href="${s.link}" target="_blank" rel="noopener">公式リンク</a>` : "";
+        return `
+          <article class="featured-card card" aria-label="${s.title}">
+            <div style="flex:1">
+              <h3 class="featured-title">${s.title}${badge}</h3>
+              <p class="featured-meta">${s.date} ・ ${s.via}</p>
+              <p class="featured-notes">${s.notes}${link}</p>
+            </div>
+          </article>
+        `;
+      })
+      .join("");
+  }
+
+  function populateYearFilter(){
+    const select = document.getElementById("yearFilter");
+    const years = Array.from(new Set(SONGS.map(s=>s.year))).sort((a,b)=>b-a);
+    years.forEach(y=>{
+      const opt = document.createElement("option");
+      opt.value = String(y);
+      opt.textContent = `${y}年`;
+      select.appendChild(opt);
+    });
+  }
+
+  function renderDiscography(){
+    const tbody = document.getElementById("discBody");
+    const q = (document.getElementById("discSearch").value || "").trim().toLowerCase();
+    const y = (document.getElementById("yearFilter").value || "").trim();
+    const r = (document.getElementById("roleFilter").value || "").trim();
+
+    const rows = SONGS
+      .filter(s => !y || String(s.year) === y)
+      .filter(s => !r || s.role === r)
+      .filter(s => {
+        if(!q) return true;
+        const hay = `${s.title} ${s.via} ${s.notes}`.toLowerCase();
+        return hay.includes(q);
+      })
+      .slice()
+      .sort((a,b)=> b.date.localeCompare(a.date))
+      .map(s => {
+        const link = s.link ? `<a class="disc-link" href="${s.link}" target="_blank" rel="noopener">公式リンク</a>` : "";
+        return `
+          <tr>
+            <td>${s.date}</td>
+            <td><strong>${s.title}</strong><br><span class="small">${s.via}</span></td>
+            <td><span class="badge">${s.role}</span> ${ROLE_BADGE[s.role]||""}</td>
+            <td>${s.notes || ""}${link ? "<br>"+link : ""}</td>
+          </tr>
+        `;
+      })
+      .join("");
+
+    tbody.innerHTML = rows || `<tr><td colspan="4" class="small">該当する楽曲がありません。</td></tr>`;
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    renderFeatured();
+    populateYearFilter();
+    renderDiscography();
+    document.getElementById("discSearch").addEventListener("input", renderDiscography);
+    document.getElementById("yearFilter").addEventListener("change", renderDiscography);
+    document.getElementById("roleFilter").addEventListener("change", renderDiscography);
+  });
+  </script>
 </body>
 </html>
